@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: calculator-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: calculator.sam
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: unified-service
+            port:
+              number: 80
